@@ -1,80 +1,140 @@
 
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سرور AXZ Minecraft</title>
+    <title>AXZ Minecraft Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(to top right, #4caf50, #00bcd4);
-            font-family: 'Vazir', sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+            background: #0f0f0f;
             color: white;
+            overflow-x: hidden;
+        }
+        .content {
+            z-index: 1;
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            margin-top: 100px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px limegreen;
+            backdrop-filter: blur(8px);
+        }
+        h1, h2 {
             text-align: center;
-        }
-        .container {
-            background-color: rgba(0, 0, 0, 0.7);
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .ip {
-            background: #222;
-            padding: 10px 15px;
-            border-radius: 10px;
-            display: inline-block;
-            font-size: 18px;
-            margin-bottom: 20px;
         }
         ul {
             list-style: none;
             padding: 0;
-            text-align: right;
         }
-        ul li {
-            margin: 10px 0;
-            font-size: 18px;
+        li {
+            padding: 5px 0;
+        }
+        canvas#particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
         a {
-            color: #ffd700;
+            color: #00ffff;
             text-decoration: none;
-            font-weight: bold;
-        }
-        .footer {
-            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎮 خوش آمدید به سرور <span style="color: yellow">AXZ</span></h1>
-        <div class="ip">🌐 IP: MC_King_aXz.aternos.me:36377</div>
-
-        <h2 style="margin-top: 30px;">📜 قوانین سرور</h2>
+    <canvas id="particles-js"></canvas>
+    <div class="content">
+        <h1>☀️ خوش آمدید به سرور AXZ ☀️</h1>
+        <p style="text-align: center;">برای ارتباط با ما:
+            <a href="https://rubika.ir/kingaxz" target="_blank">روبیکا</a> | 
+            <a href="https://www.aparat.com/KING_AXZX" target="_blank">آپارات</a>
+        </p>
+        <h2>📜 قوانین سرور</h2>
         <ul>
             <li>❌ استفاده از هرگونه چیت و هک ممنوع است.</li>
             <li>❌ اسپم کردن در چت مجاز نیست.</li>
             <li>✅ رفتار محترمانه با بازیکنان الزامی است.</li>
             <li>❌ تبلیغ سرورهای دیگر ممنوع است.</li>
             <li>✅ استفاده از ویژگی‌های رنک‌ها فقط برای صاحبان آن‌ها مجاز است.</li>
-            <li>❌ استفاده از باگ‌ها برای مزیت ناعادلانه ممنوع است.</li>
-            <li>✅ گزارش باگ یا مشکلات = هدیه!</li>
+            <li>❌ استفاده از باگ‌های بازی جهت مزیت ناعادلانه ممنوع است.</li>
+            <li>✅ گزارش باگ یا مشکلات به ادمین = هدیه!</li>
             <li>❌ مزاحمت برای بازیکنان تازه‌وارد ممنوع است.</li>
         </ul>
-
-        <div class="footer">
-            🔗 <a href="https://rubika.ir/kingaxz" target="_blank">کانال روبیکا</a> |
-            📺 <a href="https://www.aparat.com/KING_AXZX" target="_blank">کانال آپارات</a>
-        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00ffcc"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 4,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
