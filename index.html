@@ -12,11 +12,14 @@
             color: #ffffff;
             direction: rtl;
             overflow-x: hidden;
+            position: relative;
         }
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
+            z-index: 2;
         }
         .section {
             background-color: rgba(0, 0, 50, 0.4);
@@ -41,7 +44,7 @@
             left: 0;
             width: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
         .bed {
             width: 80px;
@@ -63,13 +66,41 @@
             50% { transform: translateY(-20px); }
         }
 
-        .content {
-            position: relative;
-            z-index: 1;
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('https://i.ibb.co/5TqM8m7/rain.gif');
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px 20px;
+            padding: 10px 20px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .links a:hover {
+            background-color: rgba(255,255,255,0.4);
         }
     </style>
 </head>
 <body>
+    <div class="rain"></div>
     <div class="beds">
         <div class="bed"></div>
         <div class="bed"></div>
@@ -96,6 +127,11 @@
             <h2>✨ معرفی حرفه‌ای سرور BedWars</h2>
             <p>به یکی از جذاب‌ترین سرورهای ماین‌کرافت BedWars خوش آمدید! این سرور با گیم‌پلی منحصربه‌فرد، قوانین حرفه‌ای و محیطی دوستانه طراحی شده تا تجربه‌ای فوق‌العاده برای بازیکنان فراهم کند.</p>
             <p>اگر دنبال رقابت سالم، چالش‌های هیجان‌انگیز و احترام متقابل هستی، جای درستی اومدی! با دوستانت وارد شو، تخت‌ها رو بشکن و مهارتتو نشون بده! 🛏️⚔️</p>
+        </div>
+
+        <div class="section links">
+            <a href="https://www.aparat.com/KING_AXZX" target="_blank">کانال آپارات</a>
+            <a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a>
         </div>
     </div>
 </body>
