@@ -6,58 +6,71 @@
     <title>سرور BedWars</title>
     <style>
         body {
-            font-family: Tahoma, sans-serif;
-            background: linear-gradient(to bottom, #007BFF, #B3D7FF);
             margin: 0;
-            padding: 20px;
+            font-family: Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #ffffff;
             direction: rtl;
-            text-align: center;
-            color: #fff;
+            display: flex;
+            height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
+        .sidebar {
+            width: 250px;
+            background-color: rgba(0, 0, 50, 0.6);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+        .sidebar h2 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            display: block;
+            margin: 10px 0;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .sidebar a:hover {
+            color: #00ffff;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
         }
         .section {
-            background: rgba(255, 255, 255, 0.15);
+            background-color: rgba(255,255,255,0.1);
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
         }
-        h2 {
-            color: #fff;
+        h1 {
+            color: #00ffff;
         }
-        p, a {
-            font-size: 16px;
-            color: #f0f0f0;
+        p {
+            font-size: 18px;
+            line-height: 1.8;
         }
-        a {
-            text-decoration: underline;
-        }
-        .important {
-            color: #ffcccb;
-            font-weight: bold;
-        }
-        .ads {
-            margin-top: 30px;
-            padding: 20px;
-            border: 2px dashed white;
-        }
-        .ads img {
-            max-width: 100%;
-            border-radius: 10px;
+        strong {
+            color: #ffff99;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="sidebar">
+    <h2>لینک‌ها</h2>
+    <a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a>
+    <a href="https://www.aparat.com/KING_AXZX" target="_blank">صفحه آپارات</a>
+</div>
+
+<div class="main">
     <div class="section">
-        <h2>🎮 سرور BedWars ماین‌کرافت</h2>
-        <p>آی‌پی سرور: <strong>MC_King_aXz.aternos.me:36377</strong></p>
-        <p>💬 کانال روبیکا: <a href="https://rubika.ir/MCKINGAXZ" target="_blank">rubika.ir/MCKINGAXZ</a></p>
-        <p>🎥 صفحه آپارات: <a href="https://www.aparat.com/KING_AXZX" target="_blank">aparat.com/KING_AXZX</a></p>
+        <h1>🎮 سرور BedWars ماین‌کرافت</h1>
+        <p><strong>IP:</strong> MC_King_aXz.aternos.me:36377</p>
     </div>
 
     <div class="section">
@@ -65,14 +78,7 @@
         <p>🚫 استفاده از چیت، هک یا ماکرو ممنوع</p>
         <p>🗣️ رفتار توهین‌آمیز = بن دائمی</p>
         <p>❌ Cross-team ممنوع</p>
-        <p class="important">با احترام به قوانین، بازی لذت‌بخش‌تره!</p>
-    </div>
-
-    <div class="section ads">
-        <h2>📢 تبلیغات سرور</h2>
-        <p>اینجا جاییه که تبلیغات شما نمایش داده میشه! ✨</p>
-        <img src="ad1.jpg" alt="تبلیغ نمونه">
-        <p>توضیح تبلیغ: این یه نمونه تبلیغه. وقتی عکس و متن دادی، جایگزین می‌کنم.</p>
+        <p><strong>با احترام به قوانین، بازی لذت‌بخش‌تره!</strong></p>
     </div>
 </div>
 
