@@ -8,79 +8,95 @@
         body {
             margin: 0;
             font-family: Tahoma, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #2193b0, #6dd5ed);
             color: #ffffff;
             direction: rtl;
-            display: flex;
-            height: 100vh;
+            overflow-x: hidden;
         }
-        .sidebar {
-            width: 250px;
-            background-color: rgba(0, 0, 50, 0.6);
-            padding: 20px;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-        }
-        .sidebar h2 {
-            color: #ffcc00;
-            margin-bottom: 10px;
-        }
-        .sidebar a {
-            display: block;
-            margin: 10px 0;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .sidebar a:hover {
-            color: #00ffff;
-        }
-        .main {
-            flex-grow: 1;
-            padding: 40px;
-            overflow-y: auto;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
         .section {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(0, 0, 50, 0.4);
             border-radius: 12px;
             padding: 25px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             box-shadow: 0 0 15px rgba(0,0,0,0.3);
         }
-        h1 {
-            color: #00ffff;
+        h1, h2 {
+            color: #aee4f8;
         }
         p {
             font-size: 18px;
             line-height: 1.8;
         }
         strong {
-            color: #ffff99;
+            color: #ffeb3b;
+        }
+        .beds {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bed {
+            width: 80px;
+            height: 40px;
+            background: linear-gradient(45deg, #4fc3f7, #0288d1);
+            border-radius: 8px;
+            position: absolute;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+        .bed:nth-child(1) { top: 100px; left: 10%; animation-delay: 0s; }
+        .bed:nth-child(2) { top: 200px; left: 30%; animation-delay: 1s; }
+        .bed:nth-child(3) { top: 150px; left: 50%; animation-delay: 2s; }
+        .bed:nth-child(4) { top: 250px; left: 70%; animation-delay: 3s; }
+        .bed:nth-child(5) { top: 180px; left: 85%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-
-<div class="sidebar">
-    <h2>لینک‌ها</h2>
-    <a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a>
-    <a href="https://www.aparat.com/KING_AXZX" target="_blank">صفحه آپارات</a>
-</div>
-
-<div class="main">
-    <div class="section">
-        <h1>🎮 سرور BedWars ماین‌کرافت</h1>
-        <p><strong>IP:</strong> MC_King_aXz.aternos.me:36377</p>
+    <div class="beds">
+        <div class="bed"></div>
+        <div class="bed"></div>
+        <div class="bed"></div>
+        <div class="bed"></div>
+        <div class="bed"></div>
     </div>
 
-    <div class="section">
-        <h2>📜 قوانین سرور</h2>
-        <p>🚫 استفاده از چیت، هک یا ماکرو ممنوع</p>
-        <p>🗣️ رفتار توهین‌آمیز = بن دائمی</p>
-        <p>❌ Cross-team ممنوع</p>
-        <p><strong>با احترام به قوانین، بازی لذت‌بخش‌تره!</strong></p>
-    </div>
-</div>
+    <div class="container content">
+        <div class="section">
+            <h1>🎮 سرور BedWars ماین‌کرافت</h1>
+            <p><strong>IP:</strong> MC_King_aXz.aternos.me:36377</p>
+        </div>
 
+        <div class="section">
+            <h2>📜 قوانین سرور</h2>
+            <p>🚫 استفاده از چیت، هک یا ماکرو ممنوع</p>
+            <p>🗣️ رفتار توهین‌آمیز = بن دائمی</p>
+            <p>❌ Cross-team ممنوع</p>
+            <p><strong>با احترام به قوانین، بازی لذت‌بخش‌تره!</strong></p>
+        </div>
+
+        <div class="section">
+            <h2>✨ معرفی حرفه‌ای سرور BedWars</h2>
+            <p>به یکی از جذاب‌ترین سرورهای ماین‌کرافت BedWars خوش آمدید! این سرور با گیم‌پلی منحصربه‌فرد، قوانین حرفه‌ای و محیطی دوستانه طراحی شده تا تجربه‌ای فوق‌العاده برای بازیکنان فراهم کند.</p>
+            <p>اگر دنبال رقابت سالم، چالش‌های هیجان‌انگیز و احترام متقابل هستی، جای درستی اومدی! با دوستانت وارد شو، تخت‌ها رو بشکن و مهارتتو نشون بده! 🛏️⚔️</p>
+        </div>
+    </div>
 </body>
 </html>
