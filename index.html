@@ -98,25 +98,39 @@
             background-color: rgba(255,255,255,0.4);
         }
     </style>
+
+        <style>
+        .rain-drop {
+            position: fixed;
+            width: 2px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            top: -10px;
+            animation: rain 0.5s linear infinite;
+        }
+        @keyframes rain {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        </style>
+        
 </head>
 <body>
     <div class="rain"></div>
     <div class="beds">
-<div class="bed" style="top: 80px; left: 5%; animation-delay: 0.0s;"></div>
-<div class="bed" style="top: 100px; left: 12%; animation-delay: 0.3s;"></div>
-<div class="bed" style="top: 120px; left: 19%; animation-delay: 0.6s;"></div>
-<div class="bed" style="top: 140px; left: 26%; animation-delay: 0.8999999999999999s;"></div>
-<div class="bed" style="top: 160px; left: 33%; animation-delay: 1.2s;"></div>
-<div class="bed" style="top: 180px; left: 40%; animation-delay: 1.5s;"></div>
-<div class="bed" style="top: 200px; left: 47%; animation-delay: 1.7999999999999998s;"></div>
-<div class="bed" style="top: 220px; left: 54%; animation-delay: 2.1s;"></div>
-<div class="bed" style="top: 240px; left: 61%; animation-delay: 2.4s;"></div>
-<div class="bed" style="top: 260px; left: 68%; animation-delay: 2.6999999999999997s;"></div>
-<div class="bed" style="top: 280px; left: 75%; animation-delay: 3.0s;"></div>
-<div class="bed" style="top: 300px; left: 82%; animation-delay: 3.3s;"></div>
-<div class="bed" style="top: 320px; left: 89%; animation-delay: 3.5999999999999996s;"></div>
-<div class="bed" style="top: 340px; left: 96%; animation-delay: 3.9s;"></div>
-<div class="bed" style="top: 360px; left: 3%; animation-delay: 4.2s;"></div>
+<div class="bed" style="top: 50px; left: 10%; animation-delay: 0.0s;"></div>
+<div class="bed" style="top: 90px; left: 27%; animation-delay: 0.5s;"></div>
+<div class="bed" style="top: 130px; left: 44%; animation-delay: 1.0s;"></div>
+<div class="bed" style="top: 170px; left: 61%; animation-delay: 1.5s;"></div>
+<div class="bed" style="top: 210px; left: 78%; animation-delay: 2.0s;"></div>
+<div class="bed" style="top: 250px; left: 95%; animation-delay: 2.5s;"></div>
+<div class="bed" style="top: 290px; left: 12%; animation-delay: 3.0s;"></div>
+<div class="bed" style="top: 330px; left: 29%; animation-delay: 3.5s;"></div>
+<div class="bed" style="top: 370px; left: 46%; animation-delay: 4.0s;"></div>
+<div class="bed" style="top: 410px; left: 63%; animation-delay: 4.5s;"></div>
+<div class="bed" style="top: 450px; left: 80%; animation-delay: 5.0s;"></div>
+<div class="bed" style="top: 490px; left: 97%; animation-delay: 5.5s;"></div>
 </div>
         <div class="bed"></div>
         <div class="bed"></div>
@@ -127,7 +141,7 @@
     <div class="container content">
         <div class="section">
             <h1>🎮 سرور BedWars ماین‌کرافت</h1>
-            <p><strong>IP:</strong><br><a href="https://www.aparat.com/KING_AXZX" target="_blank">کانال آپارات</a> | <a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a> MC_King_aXz.aternos.me:36377</p>
+            <p><strong>IP:</strong><br><span style="font-size:14px;"><a href="https://www.aparat.com/KING_AXZX" target="_blank">کانال آپارات</a><br><a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a></span> MC_King_aXz.aternos.me:36377</p>
         </div>
 
         <div class="section">
@@ -150,16 +164,16 @@
         </div>
     </div>
 
-    <script>
-        for (let i = 0; i < 100; i++) {
-            let drop = document.createElement("div");
-            drop.className = "rain-drop";
-            drop.style.left = Math.random() * 100 + "vw";
-            drop.style.animationDelay = Math.random() + "s";
-            drop.style.animationDuration = (0.5 + Math.random() * 0.5) + "s";
-            document.body.appendChild(drop);
-        }
-    </script>
+        <script>
+            for (let i = 0; i < 100; i++) {
+                let drop = document.createElement("div");
+                drop.className = "rain-drop";
+                drop.style.left = Math.random() * 100 + "vw";
+                drop.style.animationDelay = Math.random() + "s";
+                drop.style.animationDuration = (0.4 + Math.random() * 0.4) + "s";
+                document.body.appendChild(drop);
+            }
+        </script>
         
 </body>
 </html>
