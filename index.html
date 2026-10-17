@@ -37,44 +37,66 @@ main{max-width:1120px;margin:auto;padding:58px 22px 42px}.hero{text-align:center
 <footer>STARK © 2026 · طراحی شده برای نمایشگرهای موبایل و دسکتاپ</footer>
 <script>
 const API='https://nerkh.jahankhahan.shop/data/live.json';
+const PROXY='https://api.allorigins.win/raw?url='+encodeURIComponent(API);
 const items=[
- {name:'دلار آمریکا',symbol:'USD',keys:['dollar','usd','دلار','dollar_price','price_dollar']},
- {name:'یورو',symbol:'EUR',keys:['euro','eur','یورو','euro_price','price_euro']},
- {name:'طلای ۱۸ عیار',symbol:'GOLD 18K',keys:['gold18','gold_18','gold','طلای ۱۸','طلای 18','geram18','18ayar','gold_price']},
- {name:'سکه امامی',symbol:'COIN',keys:['emami','coin','سکه امامی','سکه','sekke']},
- {name:'نقره',symbol:'SILVER',keys:['silver','نقره','silver_price']},
- {name:'درهم امارات',symbol:'AED',keys:['dirham','aed','درهم','dirham_price']}
+ {name:'دلار آمریکا',symbol:'USD',keys:['usd','dollar','دلار','دلار آزاد','قیمت دلار','price_usd','usdprice','usdrate']},
+ {name:'یورو',symbol:'EUR',keys:['eur','euro','یورو','قیمت یورو','price_eur','europrice','eurorate']},
+ {name:'طلای ۱۸ عیار',symbol:'GOLD 18K',keys:['gold18','gold_18','gold18k','gold','طلای ۱۸','طلای 18','طلای ۱۸ عیار','طلای 18 عیار','geram18','18ayar','goldprice','gold_price']},
+ {name:'سکه امامی',symbol:'COIN',keys:['emami','coin','سکه امامی','سکه امامی','سکه','sekke','emamicoin']},
+ {name:'نقره',symbol:'SILVER',keys:['silver','نقره','قیمت نقره','silverprice','silver_price']},
+ {name:'درهم امارات',symbol:'AED',keys:['aed','dirham','درهم','درهم امارات','قیمت درهم','dirhamprice']}
 ];
 const faNum=n=>Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2});
-function norm(s){return String(s??'').toLowerCase().replace(/[\s_\-]/g,'')}
+function norm(s){return String(s??'').toLowerCase().replace(/[\s_\-]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d))}
+function flatten(data,out=[],path=''){
+ if(data===null||data===undefined)return out;
+ if(Array.isArray(data)){data.forEach((v,i)=>flatten(v,out,path+'['+i+']'));return out}
+ if(typeof data==='object'){for(const [k,v] of Object.entries(data))flatten(v,out,path?path+'.'+k:k);return out}
+ out.push({key:path.split('.').pop()||path,path,value:data});return out;
+}
 function findValue(data,keys){
- if(!data||typeof data!=='object')return null;
- const entries=Object.entries(data);
- for(const k of keys){const target=norm(k);for(const [key,val] of entries){if(norm(key)===target&&val!==null&&val!==''&&typeof val!=='object')return val}}
- for(const [key,val] of entries){if(val&&typeof val==='object'){const found=findValue(val,keys);if(found!==null)return found}}
+ const all=flatten(data);
+ for(const k of keys){const target=norm(k);const hit=all.find(x=>norm(x.key)===target);if(hit&&hit.value!==''&&hit.value!==null)return hit.value}
+ for(const k of keys){const target=norm(k);const hit=all.find(x=>{const key=norm(x.key);return key.length>2&&(key.includes(target)||target.includes(key))&&x.value!==''&&x.value!==null&&x.value!==undefined});if(hit)return hit.value}
  return null;
 }
 function formatPrice(value){
  if(value===null||value===undefined||value==='')return null;
- if(typeof value==='object')value=value.price??value.value??value.rate;
+ if(typeof value==='object')value=value.price??value.value??value.rate??value.amount;
  const raw=String(value).replace(/[,٬\s]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
  const n=Number(raw);return Number.isFinite(n)?faNum(n):String(value);
 }
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function getData(){
+ let directError;
+ try{
+  const r=await fetch(API+'?t='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return await r.json();
+ }catch(e){directError=e}
+ try{
+  const r=await fetch(PROXY+'&t='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw new Error('Proxy HTTP '+r.status);
+  return await r.json();
+ }catch(e){throw new Error('اتصال مستقیم و پراکسی ناموفق بود؛ '+(e.message||directError?.message||''))}
+}
 async function load(){
  const button=document.getElementById('refresh');button.disabled=true;
+ document.getElementById('updated').textContent='در حال دریافت اطلاعات…';
  try{
-  const response=await fetch(API+'?t='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw new Error('HTTP '+response.status);
-  const data=await response.json();
-  document.getElementById('cards').innerHTML=items.map(item=>{
-   const value=formatPrice(findValue(data,item.keys));
-   return '<article class="card"><div class="cardtop"><span class="name">'+item.name+'</span><span class="symbol">'+item.symbol+'</span></div><div class="price '+(value===null?'error':'')+'">'+(value===null?'در دادهٔ دریافتی موجود نیست':value)+'</div><div class="unit">'+(value===null?'نام فیلد در منبع شناسایی نشد':'تومان')+'</div></article>';
-  }).join('');
+  const data=await getData();
+  const found=items.map(item=>({item,value:formatPrice(findValue(data,item.keys))}));
+  document.getElementById('cards').innerHTML=found.map(({item,value})=>
+   '<article class="card"><div class="cardtop"><span class="name">'+esc(item.name)+'</span><span class="symbol">'+esc(item.symbol)+'</span></div><div class="price '+(value===null?'error':'')+'">'+(value===null?'در دادهٔ دریافتی موجود نیست':esc(value))+'</div><div class="unit">'+(value===null?'نام فیلد در منبع شناسایی نشد':'تومان')+'</div></article>'
+  ).join('');
+  const count=found.filter(x=>x.value!==null).length;
   document.getElementById('updated').textContent='آخرین بررسی: '+new Date().toLocaleTimeString('fa-IR');
-  document.getElementById('source').textContent='منبع: nerkh.jahankhahan.shop · بروزرسانی خودکار هر ۶۰ ثانیه';
+  document.getElementById('source').textContent=count
+   ?'منبع: nerkh.jahankhahan.shop · '+count+' از ۶ نرخ شناسایی شد · بروزرسانی هر ۶۰ ثانیه'
+   :'داده دریافت شد، اما ساختار فیلدهای قیمت شناسایی نشد.';
  }catch(e){
-  document.getElementById('updated').innerHTML='<span class="error">اتصال به منبع اطلاعات برقرار نشد</span>';
-  document.getElementById('source').textContent='دریافت داده ناموفق بود؛ ممکن است منبع یا دسترسی مرورگر محدود باشد.';
+  document.getElementById('updated').innerHTML='<span class="error">دریافت قیمت‌ها ناموفق بود</span>';
+  document.getElementById('source').textContent='خطای اتصال/CORS؛ دکمه بروزرسانی را بزنید یا بعداً دوباره تلاش کنید.';
  }finally{button.disabled=false}
 }
 document.getElementById('refresh').addEventListener('click',load);
