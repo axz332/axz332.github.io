@@ -1,196 +1,84 @@
-
-<!DOCTYPE html>
-<html lang="fa">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>سرور BedWars</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Tahoma, sans-serif;
-            background: linear-gradient(135deg, #2193b0, #6dd5ed);
-            color: #ffffff;
-            direction: rtl;
-            overflow-x: hidden;
-            position: relative;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 2;
-        }
-        .section {
-            background-color: rgba(0, 0, 50, 0.4);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-        }
-        h1, h2 {
-            color: #aee4f8;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        strong {
-            color: #ffeb3b;
-        }
-        .beds {
-            position: absolute;
-            top: 50px;
-            left: 0;
-            width: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .bed {
-            width: 80px;
-            height: 40px;
-            background: linear-gradient(45deg, #4fc3f7, #0288d1);
-            border-radius: 8px;
-            position: absolute;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: float 4s ease-in-out infinite;
-        }
-        .bed:nth-child(1) { top: 100px; left: 10%; animation-delay: 0s; }
-        .bed:nth-child(2) { top: 200px; left: 30%; animation-delay: 1s; }
-        .bed:nth-child(3) { top: 150px; left: 50%; animation-delay: 2s; }
-        .bed:nth-child(4) { top: 250px; left: 70%; animation-delay: 3s; }
-        .bed:nth-child(5) { top: 180px; left: 85%; animation-delay: 1.5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            background-image: url('https://i.ibb.co/5TqM8m7/rain.gif');
-            background-size: cover;
-            opacity: 0.2;
-        }
-
-        .links {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .links a {
-            display: inline-block;
-            margin: 10px 20px;
-            padding: 10px 20px;
-            background-color: rgba(255,255,255,0.2);
-            color: #fff;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .links a:hover {
-            background-color: rgba(255,255,255,0.4);
-        }
-    </style>
-
-        <style>
-        .rain-drop {
-            position: fixed;
-            width: 2px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.6);
-            top: -10px;
-            animation: rain 0.5s linear infinite;
-        }
-        @keyframes rain {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-        </style>
-        
-
-    <style>
-    body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        background: linear-gradient(-45deg, #ff0000, #00ff00, #0000ff, #ffff00);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
-        font-family: sans-serif;
-    }
-    @keyframes gradientBG {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-    }
-    </style>
-    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>STARK | بازار زنده</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap');
+:root{--red:#ff2638;--bg:#080808;--panel:#121212;--muted:#a7a7a7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#321015 0,transparent 42%),radial-gradient(ellipse at 0% 60%,#1d0a0c 0,transparent 35%),var(--bg);color:#f6f6f6;font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh}
+header{padding:22px max(5%,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff14;background:#080808b8;position:sticky;top:0;backdrop-filter:blur(12px);z-index:5}
+.logo{font-size:28px;font-weight:900;letter-spacing:4px;color:white}.logo span{color:var(--red);text-shadow:0 0 22px #ff263877}.live{font-size:12px;color:#ddd;display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#ff2638;box-shadow:0 0 12px var(--red);display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{opacity:.35}}
+main{max-width:1120px;margin:auto;padding:58px 22px 42px}.hero{text-align:center;margin-bottom:38px}.eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:3px}.hero h1{font-size:clamp(38px,7vw,70px);line-height:1.15;margin:12px 0;font-weight:900}.hero h1 span{color:var(--red);text-shadow:0 0 36px #ff263833}.hero p{color:var(--muted);margin:0;font-size:15px}
+.status{display:flex;justify-content:center;align-items:center;gap:9px;margin:20px 0 0;color:#bdbdbd;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#171717,#0e0e0e);border:1px solid #ffffff12;border-radius:18px;padding:22px;min-height:150px;transition:.2s}.card:before{content:"";position:absolute;top:0;right:0;width:4px;height:100%;background:var(--red);opacity:.85}.card:hover{transform:translateY(-4px);border-color:#ff263855;box-shadow:0 12px 40px #ff26380d}.cardtop{display:flex;align-items:center;justify-content:space-between;gap:8px}.name{font-weight:700;color:#ddd;font-size:14px}.symbol{font-size:11px;color:var(--red);background:#ff263815;border:1px solid #ff26382b;border-radius:7px;padding:4px 8px}.price{font-size:clamp(22px,3vw,31px);font-weight:800;margin:20px 0 4px;direction:ltr;text-align:right;overflow-wrap:anywhere}.unit{color:#9a9a9a;font-size:12px}.footer{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:28px;padding:18px 20px;background:#111;border:1px solid #ffffff12;border-radius:14px;color:#999;font-size:12px}.refresh{border:1px solid #ff263855;background:#ff263811;color:#ff6a75;border-radius:9px;padding:9px 14px;font:inherit;cursor:pointer}.refresh:hover{background:#ff263825}.error{color:#ff858d}.skeleton{color:#666}.note{color:#777;text-align:center;font-size:11px;margin-top:26px}footer{text-align:center;padding:25px;color:#555;font-size:11px;border-top:1px solid #ffffff0d}a{color:#ff6874}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding-top:40px}.card{padding:17px}.price{font-size:23px}}
+@media(max-width:450px){.grid{grid-template-columns:1fr}.card{min-height:125px}.price{margin-top:13px}header{padding:16px 20px}.logo{font-size:23px}}
+</style>
 </head>
 <body>
-    <div class="rain"></div>
-    
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-        
-        
-        
-    </div>
-
-    <div class="container content">
-        <div class="section">
-            <h1>🎮 سرور BedWars ماین‌کرافت</h1>
-            <p><strong>IP:</strong><br><span style="font-size:14px;"><a href="https://www.aparat.com/KING_AXZX" target="_blank">کانال آپارات</a><br><a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a></span> MC_King_aXz.aternos.me:36377</p>
-        </div>
-
-        <div class="section">
-            <h2>📜 قوانین سرور</h2>
-            <p>🚫 استفاده از چیت، هک یا ماکرو ممنوع</p>
-            <p>🗣️ رفتار توهین‌آمیز = بن دائمی</p>
-            <p>❌ Cross-team ممنوع</p>
-            <p><strong>با احترام به قوانین، بازی لذت‌بخش‌تره!</strong></p>
-        </div>
-
-        <div class="section">
-            <h2>✨ معرفی حرفه‌ای سرور BedWars</h2>
-            <p>به یکی از جذاب‌ترین سرورهای ماین‌کرافت BedWars خوش آمدید! این سرور با گیم‌پلی منحصربه‌فرد، قوانین حرفه‌ای و محیطی دوستانه طراحی شده تا تجربه‌ای فوق‌العاده برای بازیکنان فراهم کند.</p>
-            <p>اگر دنبال رقابت سالم، چالش‌های هیجان‌انگیز و احترام متقابل هستی، جای درستی اومدی! با دوستانت وارد شو، تخت‌ها رو بشکن و مهارتتو نشون بده! 🛏️⚔️</p>
-        </div>
-
-        <div class="section links">
-            <a href="https://www.aparat.com/KING_AXZX" target="_blank">کانال آپارات</a>
-            <a href="https://rubika.ir/MCKINGAXZ" target="_blank">کانال روبیکا</a>
-        </div>
-    </div>
-
-        <script>
-            for (let i = 0; i < 100; i++) {
-                let drop = document.createElement("div");
-                drop.className = "rain-drop";
-                drop.style.left = Math.random() * 100 + "vw";
-                drop.style.animationDelay = Math.random() + "s";
-                drop.style.animationDuration = (0.4 + Math.random() * 0.4) + "s";
-                document.body.appendChild(drop);
-            }
-        </script>
-        
+<header><div class="logo">ST<span>A</span>RK<span>.</span></div><div class="live"><i class="dot"></i> نمایشگر بازار زنده</div></header>
+<main>
+<section class="hero"><div class="eyebrow">STARK FINANCE / LIVE DATA</div><h1>نبض <span>بازار</span></h1><p>قیمت ارز و فلزات گران‌بها، در یک نگاه</p><div class="status"><i class="dot"></i><span id="updated">در حال دریافت اطلاعات…</span></div></section>
+<section class="grid" id="cards">
+<div class="card"><div class="name">دلار آمریکا</div><div class="price skeleton">در حال بارگذاری…</div></div>
+<div class="card"><div class="name">یورو</div><div class="price skeleton">در حال بارگذاری…</div></div>
+<div class="card"><div class="name">طلای ۱۸ عیار</div><div class="price skeleton">در حال بارگذاری…</div></div>
+<div class="card"><div class="name">سکه امامی</div><div class="price skeleton">در حال بارگذاری…</div></div>
+<div class="card"><div class="name">نقره</div><div class="price skeleton">در حال بارگذاری…</div></div>
+<div class="card"><div class="name">درهم امارات</div><div class="price skeleton">در حال بارگذاری…</div></div>
+</section>
+<div class="footer"><span id="source">منبع: سرویس داده بازار</span><button class="refresh" id="refresh">↻ بروزرسانی</button></div>
+<p class="note">قیمت‌ها ممکن است با تأخیر منبع همراه باشند؛ پیش از معامله، نرخ را از منبع رسمی بررسی کنید.</p>
+</main>
+<footer>STARK © 2026 · طراحی شده برای نمایشگرهای موبایل و دسکتاپ</footer>
+<script>
+const API='https://nerkh.jahankhahan.shop/data/live.json';
+const items=[
+ {name:'دلار آمریکا',symbol:'USD',keys:['dollar','usd','دلار','dollar_price','price_dollar']},
+ {name:'یورو',symbol:'EUR',keys:['euro','eur','یورو','euro_price','price_euro']},
+ {name:'طلای ۱۸ عیار',symbol:'GOLD 18K',keys:['gold18','gold_18','gold','طلای ۱۸','طلای 18','geram18','18ayar','gold_price']},
+ {name:'سکه امامی',symbol:'COIN',keys:['emami','coin','سکه امامی','سکه','sekke']},
+ {name:'نقره',symbol:'SILVER',keys:['silver','نقره','silver_price']},
+ {name:'درهم امارات',symbol:'AED',keys:['dirham','aed','درهم','dirham_price']}
+];
+const faNum=n=>Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2});
+function norm(s){return String(s??'').toLowerCase().replace(/[\s_\-]/g,'')}
+function findValue(data,keys){
+ if(!data||typeof data!=='object')return null;
+ const entries=Object.entries(data);
+ for(const k of keys){const target=norm(k);for(const [key,val] of entries){if(norm(key)===target&&val!==null&&val!==''&&typeof val!=='object')return val}}
+ for(const [key,val] of entries){if(val&&typeof val==='object'){const found=findValue(val,keys);if(found!==null)return found}}
+ return null;
+}
+function formatPrice(value){
+ if(value===null||value===undefined||value==='')return null;
+ if(typeof value==='object')value=value.price??value.value??value.rate;
+ const raw=String(value).replace(/[,٬\s]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+ const n=Number(raw);return Number.isFinite(n)?faNum(n):String(value);
+}
+async function load(){
+ const button=document.getElementById('refresh');button.disabled=true;
+ try{
+  const response=await fetch(API+'?t='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  const data=await response.json();
+  document.getElementById('cards').innerHTML=items.map(item=>{
+   const value=formatPrice(findValue(data,item.keys));
+   return '<article class="card"><div class="cardtop"><span class="name">'+item.name+'</span><span class="symbol">'+item.symbol+'</span></div><div class="price '+(value===null?'error':'')+'">'+(value===null?'در دادهٔ دریافتی موجود نیست':value)+'</div><div class="unit">'+(value===null?'نام فیلد در منبع شناسایی نشد':'تومان')+'</div></article>';
+  }).join('');
+  document.getElementById('updated').textContent='آخرین بررسی: '+new Date().toLocaleTimeString('fa-IR');
+  document.getElementById('source').textContent='منبع: nerkh.jahankhahan.shop · بروزرسانی خودکار هر ۶۰ ثانیه';
+ }catch(e){
+  document.getElementById('updated').innerHTML='<span class="error">اتصال به منبع اطلاعات برقرار نشد</span>';
+  document.getElementById('source').textContent='دریافت داده ناموفق بود؛ ممکن است منبع یا دسترسی مرورگر محدود باشد.';
+ }finally{button.disabled=false}
+}
+document.getElementById('refresh').addEventListener('click',load);
+load();setInterval(load,60000);
+</script>
 </body>
 </html>
