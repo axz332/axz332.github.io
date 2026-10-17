@@ -1,106 +1,42 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080808">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808">
 <title>STARK | بازار زنده</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 :root{--red:#ff2638;--bg:#080808;--panel:#121212;--muted:#a7a7a7}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#321015 0,transparent 42%),radial-gradient(ellipse at 0% 60%,#1d0a0c 0,transparent 35%),var(--bg);color:#f6f6f6;font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh}
-header{padding:22px max(5%,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff14;background:#080808b8;position:sticky;top:0;backdrop-filter:blur(12px);z-index:5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#451018 0,transparent 42%),radial-gradient(ellipse at 0% 60%,#260a0e 0,transparent 36%),linear-gradient(135deg,#080808,#10090b 55%,#080808);color:#f6f6f6;font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh;overflow-x:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.14;background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:42px 42px}
+header{padding:22px max(5%,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff14;background:#080808b8;backdrop-filter:blur(12px)}
 .logo{font-size:28px;font-weight:900;letter-spacing:4px;color:white}.logo span{color:var(--red);text-shadow:0 0 22px #ff263877}.live{font-size:12px;color:#ddd;display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#ff2638;box-shadow:0 0 12px var(--red);display:inline-block;animation:pulse 1.5s infinite}
-@keyframes pulse{50%{opacity:.35}}
-main{max-width:1120px;margin:auto;padding:58px 22px 42px}.hero{text-align:center;margin-bottom:38px}.eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:3px}.hero h1{font-size:clamp(38px,7vw,70px);line-height:1.15;margin:12px 0;font-weight:900}.hero h1 span{color:var(--red);text-shadow:0 0 36px #ff263833}.hero p{color:var(--muted);margin:0;font-size:15px}
-.status{display:flex;justify-content:center;align-items:center;gap:9px;margin:20px 0 0;color:#bdbdbd;font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#171717,#0e0e0e);border:1px solid #ffffff12;border-radius:18px;padding:22px;min-height:150px;transition:.2s}.card:before{content:"";position:absolute;top:0;right:0;width:4px;height:100%;background:var(--red);opacity:.85}.card:hover{transform:translateY(-4px);border-color:#ff263855;box-shadow:0 12px 40px #ff26380d}.cardtop{display:flex;align-items:center;justify-content:space-between;gap:8px}.name{font-weight:700;color:#ddd;font-size:14px}.symbol{font-size:11px;color:var(--red);background:#ff263815;border:1px solid #ff26382b;border-radius:7px;padding:4px 8px}.price{font-size:clamp(22px,3vw,31px);font-weight:800;margin:20px 0 4px;direction:ltr;text-align:right;overflow-wrap:anywhere}.unit{color:#9a9a9a;font-size:12px}.footer{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:28px;padding:18px 20px;background:#111;border:1px solid #ffffff12;border-radius:14px;color:#999;font-size:12px}.refresh{border:1px solid #ff263855;background:#ff263811;color:#ff6a75;border-radius:9px;padding:9px 14px;font:inherit;cursor:pointer}.refresh:hover{background:#ff263825}.error{color:#ff858d}.skeleton{color:#666}.note{color:#777;text-align:center;font-size:11px;margin-top:26px}footer{text-align:center;padding:25px;color:#555;font-size:11px;border-top:1px solid #ffffff0d}a{color:#ff6874}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding-top:40px}.card{padding:17px}.price{font-size:23px}}
-@media(max-width:450px){.grid{grid-template-columns:1fr}.card{min-height:125px}.price{margin-top:13px}header{padding:16px 20px}.logo{font-size:23px}}
-</style>
-</head>
+@keyframes pulse{50%{opacity:.35;box-shadow:0 0 3px var(--red)}}@keyframes rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+main{max-width:1120px;margin:auto;padding:58px 22px 42px}.hero{text-align:center;margin-bottom:38px;animation:rise .7s ease both}.eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:3px}.hero h1{font-size:clamp(38px,7vw,70px);line-height:1.15;margin:12px 0;font-weight:900}.hero h1 span{color:var(--red);text-shadow:0 0 36px #ff263855}.hero p{color:var(--muted);margin:0;font-size:15px;line-height:2}.status{display:flex;justify-content:center;align-items:center;gap:9px;margin:20px 0 0;color:#bdbdbd;font-size:12px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px;color:#aaa;font-size:12px}.refresh{border:1px solid #ff263855;background:linear-gradient(135deg,#ff26381c,#ff263808);color:#ff6874;border-radius:9px;padding:10px 15px;font:inherit;cursor:pointer;transition:.2s}.refresh:hover{background:#ff263825;transform:translateY(-2px)}.refresh:disabled{opacity:.5;cursor:wait}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#1a1719eF,#0e0e0ef5);border:1px solid #ffffff14;border-radius:18px;padding:22px;min-height:175px;transition:.25s;animation:rise .65s ease both}.card:before{content:"";position:absolute;top:0;right:0;width:4px;height:100%;background:var(--red);opacity:.85}.card:after{content:"";position:absolute;top:-45px;left:-35px;width:115px;height:115px;border-radius:50%;background:#ff263812;filter:blur(5px);pointer-events:none}.card:hover{transform:translateY(-4px);border-color:#ff263855;box-shadow:0 12px 40px #ff26380d}.cardtop{display:flex;align-items:center;justify-content:space-between;gap:8px}.name{font-weight:700;color:#ddd;font-size:14px}.symbol{font-size:11px;color:var(--red);background:#ff263815;border:1px solid #ff26382b;border-radius:7px;padding:4px 8px}.price{font-size:clamp(22px,2.4vw,30px);font-weight:800;margin:22px 0 4px;direction:ltr;text-align:right;overflow-wrap:anywhere}.unit{color:#9a9a9a;font-size:12px}.footer{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:28px;padding:18px 20px;background:#111c;border:1px solid #ffffff12;border-radius:14px;color:#999;font-size:12px}.error{color:#ff858d}.note{color:#777;text-align:center;font-size:11px;line-height:1.9;margin-top:26px}footer{text-align:center;padding:25px;color:#555;font-size:11px;border-top:1px solid #ffffff0d}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding-top:40px}.card{padding:18px}}@media(max-width:450px){.grid{grid-template-columns:1fr}.card{min-height:135px}.price{margin-top:14px}header{padding:16px 20px}.logo{font-size:23px}main{padding-inline:14px}}
+</style></head>
 <body>
 <header><div class="logo">ST<span>A</span>RK<span>.</span></div><div class="live"><i class="dot"></i> نمایشگر بازار زنده</div></header>
 <main>
 <section class="hero"><div class="eyebrow">STARK FINANCE / LIVE DATA</div><h1>نبض <span>بازار</span></h1><p>قیمت ارز و فلزات گران‌بها، در یک نگاه</p><div class="status"><i class="dot"></i><span id="updated">در حال دریافت اطلاعات…</span></div></section>
+<div class="toolbar"><span id="source">منبع: سرویس داده بازار</span><button class="refresh" id="refresh">↻ بروزرسانی</button></div>
 <section class="grid" id="cards">
-<div class="card"><div class="name">دلار آمریکا</div><div class="price skeleton">در حال بارگذاری…</div></div>
-<div class="card"><div class="name">یورو</div><div class="price skeleton">در حال بارگذاری…</div></div>
-<div class="card"><div class="name">طلای ۱۸ عیار</div><div class="price skeleton">در حال بارگذاری…</div></div>
-<div class="card"><div class="name">سکه امامی</div><div class="price skeleton">در حال بارگذاری…</div></div>
-<div class="card"><div class="name">نقره</div><div class="price skeleton">در حال بارگذاری…</div></div>
-<div class="card"><div class="name">درهم امارات</div><div class="price skeleton">در حال بارگذاری…</div></div>
+<article class="card"><div class="cardtop"><span class="name">دلار آمریکا</span><span class="symbol">USD</span></div><div class="price">در حال بارگذاری…</div><div class="unit">تومان</div></article>
+<article class="card"><div class="cardtop"><span class="name">یورو</span><span class="symbol">EUR</span></div><div class="price">در حال بارگذاری…</div><div class="unit">تومان</div></article>
+<article class="card"><div class="cardtop"><span class="name">طلا</span><span class="symbol">GOLD</span></div><div class="price">در حال بارگذاری…</div><div class="unit">تومان</div></article>
+<article class="card"><div class="cardtop"><span class="name">نقره</span><span class="symbol">SILVER</span></div><div class="price">در حال بارگذاری…</div><div class="unit">تومان</div></article>
 </section>
-<div class="footer"><span id="source">منبع: سرویس داده بازار</span><button class="refresh" id="refresh">↻ بروزرسانی</button></div>
-<p class="note">قیمت‌ها ممکن است با تأخیر منبع همراه باشند؛ پیش از معامله، نرخ را از منبع رسمی بررسی کنید.</p>
-</main>
-<footer>STARK © 2026 · طراحی شده برای نمایشگرهای موبایل و دسکتاپ</footer>
+<p class="note">نرخ‌ها از سرویس داده دریافت می‌شوند و هر ۶۰ ثانیه بررسی خواهند شد. در صورت محدودیت دسترسی مرورگر (CORS)، دریافت مستقیم ممکن است نیازمند پراکسی سمت سرور باشد.</p>
+</main><footer>STARK © 2026 · طراحی شده برای موبایل و دسکتاپ</footer>
 <script>
 const API='https://nerkh.jahankhahan.shop/data/live.json';
 const PROXY='https://api.allorigins.win/raw?url='+encodeURIComponent(API);
-const items=[
- {name:'دلار آمریکا',symbol:'USD',keys:['usd','dollar','دلار','دلار آزاد','قیمت دلار','price_usd','usdprice','usdrate']},
- {name:'یورو',symbol:'EUR',keys:['eur','euro','یورو','قیمت یورو','price_eur','europrice','eurorate']},
- {name:'طلای ۱۸ عیار',symbol:'GOLD 18K',keys:['gold18','gold_18','gold18k','gold','طلای ۱۸','طلای 18','طلای ۱۸ عیار','طلای 18 عیار','geram18','18ayar','goldprice','gold_price']},
- {name:'سکه امامی',symbol:'COIN',keys:['emami','coin','سکه امامی','سکه امامی','سکه','sekke','emamicoin']},
- {name:'نقره',symbol:'SILVER',keys:['silver','نقره','قیمت نقره','silverprice','silver_price']},
- {name:'درهم امارات',symbol:'AED',keys:['aed','dirham','درهم','درهم امارات','قیمت درهم','dirhamprice']}
-];
-const faNum=n=>Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2});
-function norm(s){return String(s??'').toLowerCase().replace(/[\s_\-]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d))}
-function flatten(data,out=[],path=''){
- if(data===null||data===undefined)return out;
- if(Array.isArray(data)){data.forEach((v,i)=>flatten(v,out,path+'['+i+']'));return out}
- if(typeof data==='object'){for(const [k,v] of Object.entries(data))flatten(v,out,path?path+'.'+k:k);return out}
- out.push({key:path.split('.').pop()||path,path,value:data});return out;
-}
-function findValue(data,keys){
- const all=flatten(data);
- for(const k of keys){const target=norm(k);const hit=all.find(x=>norm(x.key)===target);if(hit&&hit.value!==''&&hit.value!==null)return hit.value}
- for(const k of keys){const target=norm(k);const hit=all.find(x=>{const key=norm(x.key);return key.length>2&&(key.includes(target)||target.includes(key))&&x.value!==''&&x.value!==null&&x.value!==undefined});if(hit)return hit.value}
- return null;
-}
-function formatPrice(value){
- if(value===null||value===undefined||value==='')return null;
- if(typeof value==='object')value=value.price??value.value??value.rate??value.amount;
- const raw=String(value).replace(/[,٬\s]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
- const n=Number(raw);return Number.isFinite(n)?faNum(n):String(value);
-}
+const items=[{name:'دلار آمریکا',symbol:'USD',key:'dollar'},{name:'یورو',symbol:'EUR',key:'euro'},{name:'طلا',symbol:'GOLD',key:'gold'},{name:'نقره',symbol:'SILVER',key:'silver'}];
+const $=id=>document.getElementById(id);
+function numberText(v){if(v===null||v===undefined||v==='')return 'ناموجود';if(typeof v==='object')v=v.price??v.value??v.rate??v.amount??'';const s=String(v).replace(/[,٬\s]/g,'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));const n=Number(s);return s!==''&&Number.isFinite(n)?n.toLocaleString('fa-IR'):String(v||'ناموجود')}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function getData(){
- let directError;
- try{
-  const r=await fetch(API+'?t='+Date.now(),{cache:'no-store'});
-  if(!r.ok)throw new Error('HTTP '+r.status);
-  return await r.json();
- }catch(e){directError=e}
- try{
-  const r=await fetch(PROXY+'&t='+Date.now(),{cache:'no-store'});
-  if(!r.ok)throw new Error('Proxy HTTP '+r.status);
-  return await r.json();
- }catch(e){throw new Error('اتصال مستقیم و پراکسی ناموفق بود؛ '+(e.message||directError?.message||''))}
-}
-async function load(){
- const button=document.getElementById('refresh');button.disabled=true;
- document.getElementById('updated').textContent='در حال دریافت اطلاعات…';
- try{
-  const data=await getData();
-  const found=items.map(item=>({item,value:formatPrice(findValue(data,item.keys))}));
-  document.getElementById('cards').innerHTML=found.map(({item,value})=>
-   '<article class="card"><div class="cardtop"><span class="name">'+esc(item.name)+'</span><span class="symbol">'+esc(item.symbol)+'</span></div><div class="price '+(value===null?'error':'')+'">'+(value===null?'در دادهٔ دریافتی موجود نیست':esc(value))+'</div><div class="unit">'+(value===null?'نام فیلد در منبع شناسایی نشد':'تومان')+'</div></article>'
-  ).join('');
-  const count=found.filter(x=>x.value!==null).length;
-  document.getElementById('updated').textContent='آخرین بررسی: '+new Date().toLocaleTimeString('fa-IR');
-  document.getElementById('source').textContent=count
-   ?'منبع: nerkh.jahankhahan.shop · '+count+' از ۶ نرخ شناسایی شد · بروزرسانی هر ۶۰ ثانیه'
-   :'داده دریافت شد، اما ساختار فیلدهای قیمت شناسایی نشد.';
- }catch(e){
-  document.getElementById('updated').innerHTML='<span class="error">دریافت قیمت‌ها ناموفق بود</span>';
-  document.getElementById('source').textContent='خطای اتصال/CORS؛ دکمه بروزرسانی را بزنید یا بعداً دوباره تلاش کنید.';
- }finally{button.disabled=false}
-}
-document.getElementById('refresh').addEventListener('click',load);
-load();setInterval(load,60000);
-</script>
-</body>
-</html>
+async function request(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.json()}
+async function load(){const b=$('refresh');b.disabled=true;b.textContent='در حال دریافت…';$('updated').textContent='در حال دریافت اطلاعات…';try{let data;try{data=await request(API+'?t='+Date.now())}catch(e){data=await request(PROXY+'&t='+Date.now())}const rates=data.rates||{};$('cards').innerHTML=items.map((it,i)=>{const val=rates[it.key];return '<article class="card" style="animation-delay:'+i*70+'ms"><div class="cardtop"><span class="name">'+it.name+'</span><span class="symbol">'+it.symbol+'</span></div><div class="price '+(val==null?'error':'')+'">'+esc(numberText(val))+'</div><div class="unit">تومان</div></article>'}).join('');$('updated').textContent='آخرین بررسی: '+new Date().toLocaleTimeString('fa-IR')+((data.date||data.time)?' · منبع: '+(data.date||'')+' '+(data.time||''):'');$('source').textContent='اتصال موفق · به‌روزرسانی خودکار هر ۶۰ ثانیه'}catch(e){$('updated').innerHTML='<span class="error">دریافت قیمت‌ها ناموفق بود</span>';$('source').textContent='خطای اتصال یا محدودیت CORS؛ برای جزئیات اتصال را بررسی کنید.'}finally{b.disabled=false;b.textContent='↻ بروزرسانی'}}
+$('refresh').addEventListener('click',load);load();setInterval(load,60000);
+</script></body></html>
